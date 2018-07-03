@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{C6C224D3-B1C0-4F1D-AE1D-625DC5EAEDB2}</ProjectGuid>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <Keyword>ManagedCProj</Keyword>
+    <RootNamespace>QNRTCStreamingInterop</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\bin\.builds\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\bin\.builds\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+      <AdditionalLibraryDirectories>$(OutDir);.\RTCSDK\dist\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy $(ProjectDir)RTCSDK\dist\lib\QNRTCStreamingD.lib $(TargetDir) /Y /D
+xcopy $(ProjectDir)RTCSDK\dist\dll\QNRTCStreamingD.dll $(TargetDir) /Y /D</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+      <AdditionalLibraryDirectories>$(OutDir);.\RTCSDK\dist\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy $(ProjectDir)RTCSDK\dist\lib\QNRTCStreaming.lib $(TargetDir) /Y /D
+xcopy $(ProjectDir)RTCSDK\dist\dll\QNRTCStreaming.dll $(TargetDir) /Y /D</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Reference Include="pili-sdk-csharp">
+      <HintPath>pili-sdk-csharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DataConvertUtil.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="RTCAudioDeviceInfo.h" />
+    <ClInclude Include="RTCAudioDeviceSetting.h" />
+    <ClInclude Include="RTCAudioDeviceState.h" />
+    <ClInclude Include="RTCAudioDeviceStateChangedEventArgs.h" />
+    <ClInclude Include="RTCAudioListener.h" />
+    <ClInclude Include="RTCAudioListenerImpl.h" />
+    <ClInclude Include="RTCAudioPCMFrameEventArgs.h" />
+    <ClInclude Include="RTCCameraCapability.h" />
+    <ClInclude Include="RTCCameraDeviceInfo.h" />
+    <ClInclude Include="RTCCameraSetting.h" />
+    <ClInclude Include="RTCLogLevel.h" />
+    <ClInclude Include="RTCRoomErrorEventArgs.h" />
+    <ClInclude Include="RTCRoomJoinResultEventArgs.h" />
+    <ClInclude Include="RTCRoomKickoutResultEventArgs.h" />
+    <ClInclude Include="RTCRoomLeaveEventArgs.h" />
+    <ClInclude Include="RTCRoomLocalPublishResultEventArgs.h" />
+    <ClInclude Include="RTCRoomLocalStreamMuteEventArgs.h" />
+    <ClInclude Include="RTCRoomLocalUnPublishEventArgs.h" />
+    <ClInclude Include="RTCRoomRemotePublishEventArgs.h" />
+    <ClInclude Include="RTCRoomRemoteStreamMuteEventArgs.h" />
+    <ClInclude Include="RTCRoomRemoteUnPublishEventArgs.h" />
+    <ClInclude Include="RTCRoomRemoteUserJoinEventArgs.h" />
+    <ClInclude Include="RTCRoomRemoteUserLeaveEventArgs.h" />
+    <ClInclude Include="RTCRoomState.h" />
+    <ClInclude Include="RTCRoomStateChangedEventArgs.h" />
+    <ClInclude Include="RTCAudio.h" />
+    <ClInclude Include="RTCEngine.h" />
+    <ClInclude Include="RTCRoom.h" />
+    <ClInclude Include="RTCRoomListener.h" />
+    <ClInclude Include="RTCRoomListenerImpl.h" />
+    <ClInclude Include="RTCRoomStatisticsUpdatedEventArgs.h" />
+    <ClInclude Include="RTCRoomSubscribeResultEventArgs.h" />
+    <ClInclude Include="RTCScreenWindowInfo.h" />
+    <ClInclude Include="RTCSDK\dist\include\qn_rtc_audio.h" />
+    <ClInclude Include="RTCSDK\dist\include\qn_rtc_engine.h" />
+    <ClInclude Include="RTCSDK\dist\include\qn_rtc_errorcode.h" />
+    <ClInclude Include="RTCSDK\dist\include\qn_rtc_room.h" />
+    <ClInclude Include="RTCSDK\dist\include\qn_rtc_video.h" />
+    <ClInclude Include="RTCSession.h" />
+    <ClInclude Include="RTCSessionUserStateChangedEventArgs.h" />
+    <ClInclude Include="RTCStatisticsReport.h" />
+    <ClInclude Include="RTCUserDataInfo.h" />
+    <ClInclude Include="RTCVideo.h" />
+    <ClInclude Include="RTCVideoCaptureType.h" />
+    <ClInclude Include="RTCVideoDeviceState.h" />
+    <ClInclude Include="RTCVideoDeviceStateChangedEventArgs.h" />
+    <ClInclude Include="RTCVideoFrameEventArgs.h" />
+    <ClInclude Include="RTCVideoListener.h" />
+    <ClInclude Include="RTCVideoListenerImpl.h" />
+    <ClInclude Include="RTCVideoRotation.h" />
+    <ClInclude Include="Stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="DataConvertUtil.cpp" />
+    <ClCompile Include="RTCAudioDeviceInfo.cpp" />
+    <ClCompile Include="RTCAudioDeviceSetting.cpp" />
+    <ClCompile Include="RTCAudioDeviceState.cpp" />
+    <ClCompile Include="RTCAudioDeviceStateChangedEventArgs.cpp" />
+    <ClCompile Include="RTCAudioListener.cpp" />
+    <ClCompile Include="RTCAudioListenerImpl.cpp" />
+    <ClCompile Include="RTCAudioPCMFrameEventArgs.cpp" />
+    <ClCompile Include="RTCCameraCapability.cpp" />
+    <ClCompile Include="RTCCameraDeviceInfo.cpp" />
+    <ClCompile Include="RTCCameraSetting.cpp" />
+    <ClCompile Include="RTCLogLevel.cpp" />
+    <ClCompile Include="RTCRoomErrorEventArgs.cpp" />
+    <ClCompile Include="RTCRoomJoinResultEventArgs.cpp" />
+    <ClCompile Include="RTCRoomKickoutResultEventArgs.cpp" />
+    <ClCompile Include="RTCRoomLeaveEventArgs.cpp" />
+    <ClCompile Include="RTCRoomLocalPublishResultEventArgs.cpp" />
+    <ClCompile Include="RTCRoomLocalStreamMuteEventArgs.cpp" />
+    <ClCompile Include="RTCRoomLocalUnPublishEventArgs.cpp" />
+    <ClCompile Include="RTCRoomRemotePublishEventArgs.cpp" />
+    <ClCompile Include="RTCRoomRemoteStreamMuteEventArgs.cpp" />
+    <ClCompile Include="RTCRoomRemoteUnPublishEventArgs.cpp" />
+    <ClCompile Include="RTCRoomRemoteUserJoinEventArgs.cpp" />
+    <ClCompile Include="RTCRoomRemoteUserLeaveEventArgs.cpp" />
+    <ClCompile Include="RTCRoomState.cpp" />
+    <ClCompile Include="RTCRoomStateChangedEventArgs.cpp" />
+    <ClCompile Include="RTCAudio.cpp" />
+    <ClCompile Include="RTCEngine.cpp" />
+    <ClCompile Include="RTCRoom.cpp" />
+    <ClCompile Include="RTCRoomListener.cpp" />
+    <ClCompile Include="RTCRoomListenerImpl.cpp" />
+    <ClCompile Include="RTCRoomStatisticsUpdatedEventArgs.cpp" />
+    <ClCompile Include="RTCRoomSubscribeResultEventArgs.cpp" />
+    <ClCompile Include="RTCScreenWindowInfo.cpp" />
+    <ClCompile Include="RTCSession.cpp" />
+    <ClCompile Include="RTCSessionUserStateChangedEventArgs.cpp" />
+    <ClCompile Include="RTCStatisticsReport.cpp" />
+    <ClCompile Include="RTCUserDataInfo.cpp" />
+    <ClCompile Include="RTCVideo.cpp" />
+    <ClCompile Include="RTCVideoCaptureType.cpp" />
+    <ClCompile Include="RTCVideoDeviceState.cpp" />
+    <ClCompile Include="RTCVideoDeviceStateChangedEventArgs.cpp" />
+    <ClCompile Include="RTCVideoFrameEventArgs.cpp" />
+    <ClCompile Include="RTCVideoListener.cpp" />
+    <ClCompile Include="RTCVideoListenerImpl.cpp" />
+    <ClCompile Include="RTCVideoRotation.cpp" />
+    <ClCompile Include="Stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="QNRTCStreaming.Interop.nuspec" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

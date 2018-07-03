@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>QNRTCStreaming.Interop</id>
+    <version>0.1.4</version>
+    <title>QNRTCStreaming.Interop</title>
+    <authors>mao.miaoyan</authors>
+    <owners>mao.miaoyan</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>QNRTCStreaming for C# support.</description>
+    <releaseNotes>QNRTCStreaming for C# support.</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+  </metadata>
+  <files>
+    <file src="build\QNRTCStreaming.Interop.targets" target="build\QNRTCStreaming.Interop.targets" />
+    <file src="lib\net461\pili-sdk-csharp.dll" target="lib\net461\pili-sdk-csharp.dll" />
+    <file src="lib\net461\QNRTCStreaming.Interop.dll" target="lib\net461\QNRTCStreaming.Interop.dll" />
+    <file src="lib\QNRTCStreaming.dll" target="native\QNRTCStreaming.dll" />
+    <file src="lib\QNRTCStreaming.lib" target="native\QNRTCStreaming.lib" />
+  </files>
+</package>

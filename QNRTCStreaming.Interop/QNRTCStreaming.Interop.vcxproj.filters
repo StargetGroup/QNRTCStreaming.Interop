@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCEngine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCSDK\dist\include\qn_rtc_audio.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCSDK\dist\include\qn_rtc_engine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCSDK\dist\include\qn_rtc_errorcode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCSDK\dist\include\qn_rtc_room.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCSDK\dist\include\qn_rtc_video.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoom.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCAudio.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoomListener.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoomListenerImpl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoomStateChangedEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoomState.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCAudioListener.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCAudioListenerImpl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCAudioPCMFrameEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCAudioDeviceStateChangedEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DataConvertUtil.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoomJoinResultEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCAudioDeviceState.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoomLeaveEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoomRemoteUserJoinEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoomRemoteUserLeaveEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoomRemotePublishEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoomRemoteUnPublishEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoomLocalPublishResultEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoomSubscribeResultEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoomKickoutResultEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoomRemoteStreamMuteEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoomErrorEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCStatisticsReport.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoomStatisticsUpdatedEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCAudioDeviceInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCUserDataInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCAudioDeviceSetting.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCSession.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCVideoCaptureType.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCCameraCapability.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCCameraDeviceInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCCameraSetting.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCVideoDeviceState.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCVideo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCVideoListener.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCVideoFrameEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCVideoListenerImpl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCVideoDeviceStateChangedEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCSessionUserStateChangedEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoomLocalStreamMuteEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCRoomLocalUnPublishEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCLogLevel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCVideoRotation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCScreenWindowInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AssemblyInfo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCEngine.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoom.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCAudio.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoomListener.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoomListenerImpl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoomStateChangedEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoomState.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCAudioListener.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCAudioListenerImpl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCAudioPCMFrameEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCAudioDeviceStateChangedEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DataConvertUtil.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoomJoinResultEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCAudioDeviceState.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoomLeaveEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoomRemoteUserJoinEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoomRemoteUserLeaveEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoomRemotePublishEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoomRemoteUnPublishEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoomLocalPublishResultEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoomSubscribeResultEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoomKickoutResultEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoomRemoteStreamMuteEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoomErrorEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCStatisticsReport.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoomStatisticsUpdatedEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCAudioDeviceInfo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCUserDataInfo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCAudioDeviceSetting.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCSession.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCVideoCaptureType.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCCameraCapability.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCCameraDeviceInfo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCCameraSetting.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCVideoDeviceState.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCVideo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCVideoListener.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCVideoFrameEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCVideoListenerImpl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCVideoDeviceStateChangedEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCSessionUserStateChangedEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoomLocalStreamMuteEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCRoomLocalUnPublishEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCLogLevel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCVideoRotation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCScreenWindowInfo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="QNRTCStreaming.Interop.nuspec" />
+  </ItemGroup>
+</Project>
