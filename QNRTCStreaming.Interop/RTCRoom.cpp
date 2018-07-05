@@ -106,13 +106,13 @@ int RTCRoom::UnPublish()
 	return ret;
 }
 
-int RTCRoom::Subscribe(System::String^ userId, System::IntPtr^ renderHwnd)
+int RTCRoom::Subscribe(System::String^ userId, System::IntPtr renderHwnd)
 {
 	auto user_id_ = DataConvertUtil::SystemStringToStdString(userId);
 	void* render_hwnd_ = nullptr;
-	if (renderHwnd != nullptr)
+	if (renderHwnd != System::IntPtr::Zero)
 	{
-		render_hwnd_ = renderHwnd->ToPointer();
+		render_hwnd_ = renderHwnd.ToPointer();
 	}
 
 	return Entity->Subscribe(user_id_, render_hwnd_);

@@ -7,7 +7,7 @@ namespace QNRTCStreaming
 		public ref class RTCVideoFrameEventArgs
 		{
 		public:
-			property System::IntPtr^ RawData;
+			property System::IntPtr RawData;
 			property int DataLength;
 			property int Width;
 			property int Height;

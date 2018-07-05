@@ -90,7 +90,7 @@ namespace QNRTCStreaming
 			* @brief developer must call EnableVideoFakeCamera(true) first
 			*/
 			int InputVideoFrame(
-				System::IntPtr^ data,
+				System::IntPtr data,
 				int dataSize,
 				int width,
 				int height,

@@ -13,7 +13,7 @@ namespace QNRTCStreaming
 			property int Height;      //camera capture and encode height
 			property int MaxFps;       //video frames per second
 			property int Bitrate;   //video encode bitrate, unit:bps
-			property System::IntPtr^  RenderHwnd;  //video render window hwnd,MFC:HWND; QT:winId
+			property System::IntPtr  RenderHwnd;  //video render window hwnd,MFC:HWND; QT:winId
 		};
 	}
 }

@@ -2,20 +2,20 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>QNRTCStreaming.Interop</id>
-    <version>0.1.4</version>
+    <version>0.1.11</version>
     <title>QNRTCStreaming.Interop</title>
     <authors>mao.miaoyan</authors>
-    <owners>mao.miaoyan</owners>
+    <owners>mao.miaoyan,StargetGroup</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/StargetGroup/QNRTCStreaming.Interop</projectUrl>
     <description>QNRTCStreaming for C# support.</description>
-    <releaseNotes>QNRTCStreaming for C# support.</releaseNotes>
+    <releaseNotes>fix copy native file to output dir.</releaseNotes>
     <copyright>Copyright 2018</copyright>
   </metadata>
   <files>
     <file src="build\QNRTCStreaming.Interop.targets" target="build\QNRTCStreaming.Interop.targets" />
     <file src="lib\net461\pili-sdk-csharp.dll" target="lib\net461\pili-sdk-csharp.dll" />
     <file src="lib\net461\QNRTCStreaming.Interop.dll" target="lib\net461\QNRTCStreaming.Interop.dll" />
-    <file src="lib\QNRTCStreaming.dll" target="native\QNRTCStreaming.dll" />
-    <file src="lib\QNRTCStreaming.lib" target="native\QNRTCStreaming.lib" />
+    <file src="native\QNRTCStreaming.dll" target="native\QNRTCStreaming.dll" />
   </files>
 </package>

@@ -37,7 +37,7 @@ namespace QNRTCStreaming
 			System::String^ GetUserId();
 			int Publish(bool enableAudio, bool enableVideo);
 			int UnPublish();
-			int Subscribe(System::String^ userId, System::IntPtr^ renderHwnd);
+			int Subscribe(System::String^ userId, System::IntPtr renderHwnd);
 			int KickoutUser(System::String^ userId);
 			/** Mute video stream
 			* @param [in] muteFlag

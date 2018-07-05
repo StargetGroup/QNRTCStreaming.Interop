@@ -8,5 +8,5 @@ RTCCameraSetting::RTCCameraSetting()
 	Height = 480;
 	MaxFps = 15;
 	Bitrate = 300000;
-	RenderHwnd = nullptr;
+	RenderHwnd = System::IntPtr::Zero;
 }

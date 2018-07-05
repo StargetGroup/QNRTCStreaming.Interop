@@ -50,7 +50,7 @@ namespace QNRTCStreaming
 			* @brief developer must call EnableAudioFakeInput(true) first
 			*/
 			int InputAudioFrame(
-				System::IntPtr^ audioData,
+				System::IntPtr audioData,
 				int dataSize,
 				int bitsPerSample,
 				int sampleRate,

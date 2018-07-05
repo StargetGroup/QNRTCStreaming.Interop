@@ -99,9 +99,9 @@ int RTCVideo::SetCameraParams(RTCCameraSetting^ cameraSetting)
 	setting_.height = cameraSetting->Height;
 	setting_.bitrate = cameraSetting->Bitrate;
 	setting_.max_fps = cameraSetting->MaxFps;
-	if (cameraSetting->RenderHwnd)
+	if (cameraSetting->RenderHwnd != System::IntPtr::Zero)
 	{
-		setting_.render_hwnd = cameraSetting->RenderHwnd->ToPointer();
+		setting_.render_hwnd = cameraSetting->RenderHwnd.ToPointer();
 	}
 	return this->Entity->SetCameraParams(setting_);
 }
@@ -121,9 +121,9 @@ int RTCVideo::PreviewCamera(RTCCameraSetting^ cameraSetting)
 	setting_.height = cameraSetting->Height;
 	setting_.bitrate = cameraSetting->Bitrate;
 	setting_.max_fps = cameraSetting->MaxFps;
-	if (cameraSetting->RenderHwnd)
+	if (cameraSetting->RenderHwnd != System::IntPtr::Zero)
 	{
-		setting_.render_hwnd = cameraSetting->RenderHwnd->ToPointer();
+		setting_.render_hwnd = cameraSetting->RenderHwnd.ToPointer();
 	}
 	return this->Entity->PreviewCamera(setting_);
 }
@@ -142,7 +142,7 @@ int RTCVideo::EnableVideoFakeCamera(bool enableFlag)
 }
 
 int RTCVideo::InputVideoFrame(
-	System::IntPtr^ data,
+	System::IntPtr data,
 	int dataSize,
 	int width,
 	int height,
@@ -152,7 +152,7 @@ int RTCVideo::InputVideoFrame(
 	bool mirrorFlag
 )
 {
-	auto data_ = (const unsigned char*)data->ToPointer();
+	auto data_ = (const unsigned char*)data.ToPointer();
 	auto raw_type_ = (VideoCaptureType)rawType;
 	auto rotation_ = (VideoRotation)rotation;
 	return this->Entity->InputVideoFrame(data_, dataSize, width, height, timestampUs, raw_type_, rotation_);
