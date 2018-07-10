@@ -118,6 +118,12 @@ int RTCRoom::Subscribe(System::String^ userId, System::IntPtr renderHwnd)
 	return Entity->Subscribe(user_id_, render_hwnd_);
 }
 
+int RTCRoom::UnSubscribe(System::String^ userId)
+{
+	auto user_id_ = DataConvertUtil::SystemStringToStdString(userId);
+	return Entity->UnSubscribe(user_id_);
+}
+
 int RTCRoom::KickoutUser(System::String ^ userId)
 {
 	auto user_id_ = DataConvertUtil::SystemStringToStdString(userId);

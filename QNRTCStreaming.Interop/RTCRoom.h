@@ -38,6 +38,12 @@ namespace QNRTCStreaming
 			int Publish(bool enableAudio, bool enableVideo);
 			int UnPublish();
 			int Subscribe(System::String^ userId, System::IntPtr renderHwnd);
+			/** Cancel subscribe to the specified user's media stream
+			* @param [in] user_id_
+			*        the user id that will be cancel subscribed
+			* @return return 0 if success or an error code
+			*/
+			int UnSubscribe(System::String^ userId);
 			int KickoutUser(System::String^ userId);
 			/** Mute video stream
 			* @param [in] muteFlag

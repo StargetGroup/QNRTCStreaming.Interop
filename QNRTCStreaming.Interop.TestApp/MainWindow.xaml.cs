@@ -216,15 +216,17 @@ namespace QNRTCStreaming.Interop.TestApp
 
                 foreach(var user in e.Users)
                 {
-                    if (user.UserId == Session.Room.GetUserId())
-                    {
-                        Session.Room.Subscribe(user.UserId, LocalHwnd);
-                    }
-                    else
-                    {
+                    //if (user.UserId == Session.Room.GetUserId())
+                    //{
+                    //    Session.Room.Subscribe(user.UserId, LocalHwnd);
+                    //}
+                    //else
+                    //{
                         Session.Room.Subscribe(user.UserId, RemoteHwnd);
-                    }
+                    //}
                 }
+
+                Session.Room.Subscribe(Session.Room.GetUserId(), LocalHwnd);
 
                 //var users = e.Users.Select(el => el.UserId).ToList();
                 //_userListView.ItemsSource = users;
