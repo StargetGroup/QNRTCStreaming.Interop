@@ -123,7 +123,7 @@ int RTCAudio::EnableAudioFakeInput(bool enableFlag)
 
 int RTCAudio::InputAudioFrame(System::IntPtr audioData, int dataSize, int bitsPerSample, int sampleRate, int numberOfChannels, int numberOfFrames)
 {
-	void* audio_data_ = audioData.ToPointer();
+	auto audio_data_ = (const unsigned char*)audioData.ToPointer();
 	return Entity->InputAudioFrame(audio_data_, dataSize, bitsPerSample, sampleRate, numberOfChannels, numberOfFrames);
 }
 

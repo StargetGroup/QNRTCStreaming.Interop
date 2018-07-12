@@ -201,6 +201,7 @@ xcopy $(ProjectDir)RTCSDK\dist\dll\QNRTCStreaming.dll $(TargetDir) /Y /D</Comman
     <ClInclude Include="RTCVideoDeviceState.h" />
     <ClInclude Include="RTCVideoDeviceStateChangedEventArgs.h" />
     <ClInclude Include="RTCVideoFrameEventArgs.h" />
+    <ClInclude Include="RTCVideoFramePreviewEventArgs.h" />
     <ClInclude Include="RTCVideoListener.h" />
     <ClInclude Include="RTCVideoListenerImpl.h" />
     <ClInclude Include="RTCVideoRotation.h" />
@@ -251,6 +252,7 @@ xcopy $(ProjectDir)RTCSDK\dist\dll\QNRTCStreaming.dll $(TargetDir) /Y /D</Comman
     <ClCompile Include="RTCVideoDeviceState.cpp" />
     <ClCompile Include="RTCVideoDeviceStateChangedEventArgs.cpp" />
     <ClCompile Include="RTCVideoFrameEventArgs.cpp" />
+    <ClCompile Include="RTCVideoFramePreviewEventArgs.cpp" />
     <ClCompile Include="RTCVideoListener.cpp" />
     <ClCompile Include="RTCVideoListenerImpl.cpp" />
     <ClCompile Include="RTCVideoRotation.cpp" />

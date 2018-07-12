@@ -18,25 +18,7 @@
     <ClInclude Include="Stdafx.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="RTCEngine.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="RTCSDK\dist\include\qn_rtc_audio.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="RTCSDK\dist\include\qn_rtc_engine.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="RTCSDK\dist\include\qn_rtc_errorcode.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="RTCSDK\dist\include\qn_rtc_room.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="RTCSDK\dist\include\qn_rtc_video.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="RTCRoom.h">
@@ -172,6 +154,27 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="RTCScreenWindowInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCVideoFramePreviewEventArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCSDK\dist\include\qn_rtc_audio.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCSDK\dist\include\qn_rtc_engine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCSDK\dist\include\qn_rtc_errorcode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCSDK\dist\include\qn_rtc_room.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RTCSDK\dist\include\qn_rtc_video.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -318,6 +321,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="RTCScreenWindowInfo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCVideoFramePreviewEventArgs.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

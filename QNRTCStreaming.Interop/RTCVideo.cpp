@@ -200,6 +200,22 @@ int RTCVideo::GetScreenSourceId()
 	return Entity->GetScreenSourceId();
 }
 
+int RTCVideo::PreviewScreenSource(
+	System::IntPtr sourceId,
+	System::IntPtr renderHwnd,
+	bool allowDirectxCapturer
+)
+{
+	auto source_id_ = (const int)sourceId.ToPointer();
+	auto render_hwnd_ = renderHwnd.ToPointer();
+	return Entity->PreviewScreenSource(source_id_, render_hwnd_, allowDirectxCapturer);
+}
+
+int RTCVideo::UnPreviewScreenSource()
+{
+	return Entity->UnPreviewScreenSource();
+}
+
 int RTCVideo::SetMirrorWhenDisplay(System::String^ userId, bool mirrorFlag)
 {
 	auto user_id_ = DataConvertUtil::SystemStringToStdString(userId);

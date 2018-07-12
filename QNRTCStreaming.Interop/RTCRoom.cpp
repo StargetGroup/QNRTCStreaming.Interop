@@ -73,7 +73,7 @@ System::String^ RTCRoom::GetRoomName()
 
 System::String^ RTCRoom::GetUserId()
 {
-	auto user_id_ = Entity->GetUserID();
+	auto user_id_ = Entity->GetUserId();
 	auto userId = DataConvertUtil::StdStringToSystemString(user_id_);
 	return userId;
 }
@@ -173,10 +173,10 @@ void RTCRoom::EnableStatisticCallback(int periodSecond)
 
 int RTCRoom::SetMergeStreamLayout(System::String^ userId,
 	int posX, int posY, int posZ,
-	int width, int height, bool isVisible)
+	int width, int height, bool hideVideo, bool muteAudio)
 {
 	auto user_id_ = DataConvertUtil::SystemStringToStdString(userId);
-	return Entity->SetMergeStreamLayout(user_id_, posX, posY, posZ, width, height, isVisible);
+	return Entity->SetMergeStreamLayout(user_id_, posX, posY, posZ, width, height, hideVideo, muteAudio);
 }
 
 int RTCRoom::StopMergeStream()

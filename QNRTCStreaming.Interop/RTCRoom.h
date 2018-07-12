@@ -83,7 +83,7 @@ namespace QNRTCStreaming
 			*/
 			int SetMergeStreamLayout(System::String^ userId,
 				int posX, int posY, int posZ,
-				int width, int height, bool isVisible);
+				int width, int height, bool hideVideo,bool muteAudio);
 
 			int StopMergeStream();
 			System::String^ CreateRoomToken(System::String^ roomName, System::String^ userId, bool isAdmin, System::DateTime expireAt, System::String^ appId, System::String^ accessKey, System::String^ secretKey);

@@ -26,6 +26,17 @@ void RTCVideoListenerImpl::OnVideoFrame(const unsigned char * raw_data_, int dat
 	_callback->RaiseVideoFrame(args);
 }
 
+void RTCVideoListenerImpl::OnVideoFramePreview(
+	const unsigned char* raw_data_,
+	int data_len_,
+	int width_,
+	int height_,
+	qiniu::VideoCaptureType video_type_
+)
+{
+
+}
+
 void RTCVideoListenerImpl::OnVideoDeviceStateChanged(VideoDeviceState device_state_, const std::string & device_name_)
 {
 	RTCVideoDeviceStateChangedEventArgs^ args = gcnew RTCVideoDeviceStateChangedEventArgs;

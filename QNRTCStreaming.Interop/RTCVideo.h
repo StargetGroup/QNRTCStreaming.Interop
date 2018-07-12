@@ -133,6 +133,28 @@ namespace QNRTCStreaming
 			*/
 			int GetScreenSourceId();
 
+			/** Preview specify screen or window source id
+			*   video frames data callback through QNRTCVideoListener::OnVideoFramePreview
+			* @param [in] source_id_
+			*        screen window source id, obtain by method:GetScreenWindowInfo
+			* @param [in] render_hwnd_
+			*        video render window hwnd,MFC:HWND; QT:winId
+			* @param [in] allow_directx_capturer_
+			*        allowing directx based capturer or not, this capturer works on windows 7
+			*        with platform update / windows 8 or upper.
+			* @return return 0 if success, or an error code
+			*/
+			int PreviewScreenSource(
+				System::IntPtr sourceId,
+				System::IntPtr renderHwnd,
+				bool allowDirectxCapturer
+			);
+
+			/** Cancel preview screen source
+			* @return return 0 if success or an error code
+			*/
+			int UnPreviewScreenSource();
+
 			/** Mirroring the specified user, mirror = left and right rotation
 			* @param [in] user_id_
 			*        specified user id

@@ -7,6 +7,11 @@ void RTCVideoListener::RaiseVideoFrame(RTCVideoFrameEventArgs^ e)
 	this->VideoFrame(this, e);
 }
 
+void RTCVideoListener::RaiseVideoFramePreview(RTCVideoFramePreviewEventArgs^ e)
+{
+	this->VideoFramePreview(this, e);
+}
+
 void RTCVideoListener::RaiseVideoDeviceStateChanged(RTCVideoDeviceStateChangedEventArgs^ e)
 {
 	this->VideoDeviceStateChanged(this, e);

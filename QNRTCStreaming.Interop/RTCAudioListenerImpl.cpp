@@ -12,7 +12,7 @@ RTCAudioListener^ RTCAudioListenerImpl::GetCallback()
 	return this->_callback;
 }
 
-void QNRTCStreaming::Interop::RTCAudioListenerImpl::OnAudioPCMFrame(const void * audio_data_, int bits_per_sample_, int sample_rate_, size_t number_of_channels_, size_t number_of_frames_, const std::string & user_id_)
+void QNRTCStreaming::Interop::RTCAudioListenerImpl::OnAudioPCMFrame(const unsigned char* audio_data_, int bits_per_sample_, int sample_rate_, size_t number_of_channels_, size_t number_of_frames_, const std::string & user_id_)
 {
 	RTCAudioPCMFrameEventArgs^ args = gcnew RTCAudioPCMFrameEventArgs;
 	args->AudioData = System::IntPtr((void*)audio_data_);
