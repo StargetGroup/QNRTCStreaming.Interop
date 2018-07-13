@@ -131,3 +131,9 @@ bool RTCAudio::IsEnableAudioFakeInput()
 {
 	return Entity->IsEnableAudioFakeInput();
 }
+
+int RTCAudio::GetAudioLevel(System::String^ userId)
+{
+	auto user_id_ = DataConvertUtil::SystemStringToStdString(userId);
+	return Entity->GetAudioLevel(user_id_);
+}

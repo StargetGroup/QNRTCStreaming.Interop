@@ -59,6 +59,13 @@ namespace QNRTCStreaming
 			);
 
 			bool IsEnableAudioFakeInput();
+
+			/** Get audio level
+			* @param [in] user_id_
+			*        who's audio level
+			* @return 0 ~ 100£¬audio level >= 0 if success, else return -1
+			*/
+			int GetAudioLevel(System::String^ userId);
 		};
 	}
 }
