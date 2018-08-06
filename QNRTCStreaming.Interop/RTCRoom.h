@@ -19,6 +19,8 @@ namespace QNRTCStreaming
 			*/
 			static RTCRoom^ ObtainRoomInterface();
 
+			void Release();
+
 			RTCAudio^ ObtainAudioInterface();
 
 			RTCVideo^ ObtainVideoInterface();

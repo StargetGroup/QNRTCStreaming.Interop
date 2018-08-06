@@ -27,7 +27,6 @@ namespace QNRTCStreaming.Interop.TestApp
         public MainWindow()
         {
             InitializeComponent();
-            RTCEngine.Init();
             System.Windows.Forms.UserControl control = new System.Windows.Forms.UserControl();
             control.Width = 100;
             control.Height = 100;

@@ -10,8 +10,13 @@ RTCSession::RTCSession()
 {
 }
 
-void RTCSession::Init()
+int RTCSession::Init()
 {
+	auto b = RTCEngine::Init();
+	if (b != 0)
+	{
+		return b;
+	}
 	Room = RTCRoom::ObtainRoomInterface();
 	RoomListener = gcnew RTCRoomListener;
 	Room->SetRoomListener(RoomListener);
@@ -33,6 +38,7 @@ void RTCSession::Init()
 	RoomListener->RemoteStreamMute += gcnew EventHandler<RTCRoomRemoteStreamMuteEventArgs^>(this, &RTCSession::OnRoomRemoteStreamMute);
 	RoomListener->LocalUnPublish += gcnew EventHandler<RTCRoomLocalUnPublishEventArgs^>(this, &RTCSession::OnRoomLocalUnPublish);
 	RoomListener->LocalStreamMute += gcnew EventHandler<RTCRoomLocalStreamMuteEventArgs^>(this, &RTCSession::OnRoomLocalStreamMute);
+	return 0;
 }
 
 int RTCSession::JoinRoom(System::String^ roomToken)
@@ -53,6 +59,14 @@ int RTCSession::LeaveRoom()
 		return Room->LeaveRoom();
 	}
 	return -1;
+}
+
+void RTCSession::Release()
+{
+	if (Room != nullptr)
+	{
+		return Room->Release();
+	}
 }
 
 RTCUserDataInfo^ RTCSession::GetUserById(System::String^ userId)

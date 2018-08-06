@@ -18,6 +18,11 @@ RTCRoom^ QNRTCStreaming::Interop::RTCRoom::ObtainRoomInterface()
 	return room;
 }
 
+void RTCRoom::Release()
+{
+	Entity->Release();
+}
+
 RTCAudio^ RTCRoom::ObtainAudioInterface()
 {
 	auto entity = Entity->ObtainAudioInterface();

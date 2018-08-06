@@ -1,4 +1,5 @@
 #pragma once
+#include "RTCEngine.h"
 #include "RTCRoom.h"
 #include "RTCAudio.h"
 #include "RTCVideo.h"
@@ -12,7 +13,7 @@ namespace QNRTCStreaming
 		{
 		public:
 			RTCSession();
-			void Init();
+			int Init();
 			int JoinRoom(System::String^ roomToken);
 			int LeaveRoom();
 			property RTCRoom^ Room;
@@ -21,6 +22,8 @@ namespace QNRTCStreaming
 			property RTCRoomListener^ RoomListener;
 			property RTCAudioListener^ AudioListener;
 			property RTCVideoListener^ VideoListener;
+
+			void Release();
 
 			property System::Collections::Generic::List<RTCUserDataInfo^>^ Users;
 
