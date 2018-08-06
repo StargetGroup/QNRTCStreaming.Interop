@@ -113,7 +113,7 @@ namespace QNRTCStreaming.Interop.TestApp
             //setting.DeviceIndex = 0;
             //setting.DeviceType = RTCWindowsDeviceType.wdt_DefaultDevice;
             //var ret = User.Audio.SetRecordingDevice(setting);
-            var ret = Session.Room.JoinRoom(roomToken);
+            var ret = Session.JoinRoom(roomToken);
         }
 
         private void OnJoinTestRoomButtonClick(object sender, RoutedEventArgs e)
@@ -130,7 +130,7 @@ namespace QNRTCStreaming.Interop.TestApp
             //setting.DeviceIndex = 0;
             //setting.DeviceType = RTCWindowsDeviceType.wdt_DefaultDevice;
             //var ret = User.Audio.SetRecordingDevice(setting);
-            var ret = Session.Room.JoinRoom(roomToken);
+            var ret = Session.JoinRoom(roomToken);
         }
 
         private void OnJoinProductionRoomButtonClick(object sender, RoutedEventArgs e)
@@ -147,7 +147,7 @@ namespace QNRTCStreaming.Interop.TestApp
             //setting.DeviceIndex = 0;
             //setting.DeviceType = RTCWindowsDeviceType.wdt_DefaultDevice;
             //var ret = User.Audio.SetRecordingDevice(setting);
-            var ret = Session.Room.JoinRoom(roomToken);
+            var ret = Session.JoinRoom(roomToken);
         }
 
         private void OnLocalPublishResult(object sender, RTCRoomLocalPublishResultEventArgs e)
@@ -235,7 +235,7 @@ namespace QNRTCStreaming.Interop.TestApp
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            this.Session.Room?.LeaveRoom();
+            this.Session.LeaveRoom();
         }
 
         private void OnPublishAudioClick(object sender, RoutedEventArgs e)

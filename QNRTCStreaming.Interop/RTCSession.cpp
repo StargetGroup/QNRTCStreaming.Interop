@@ -37,14 +37,22 @@ void RTCSession::Init()
 
 int RTCSession::JoinRoom(System::String^ roomToken)
 {
-	Room->SetRoomListener(this->RoomListener);
-	return Room->JoinRoom(roomToken);
+	if (Room != nullptr)
+	{
+		Room->SetRoomListener(this->RoomListener);
+		return Room->JoinRoom(roomToken);
+	}
+	return -1;
 }
 
 int RTCSession::LeaveRoom()
 {
-	Room->SetRoomListener(nullptr);
-	return Room->LeaveRoom();
+	if (Room != nullptr)
+	{
+		Room->SetRoomListener(nullptr);
+		return Room->LeaveRoom();
+	}
+	return -1;
 }
 
 RTCUserDataInfo^ RTCSession::GetUserById(System::String^ userId)
