@@ -60,6 +60,7 @@ namespace QNRTCStreaming
 			property bool MuteVideoFlag;
 			property bool AudioPublished;
 			property bool VideoPublished;
+			property bool IsReleased;
 
 			/** Enable or disable statistics info, will got on QNRTCRoomListener::OnStatisticsUpdated
 			* @param [in]periodSecond

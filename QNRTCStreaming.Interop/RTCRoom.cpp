@@ -20,7 +20,10 @@ RTCRoom^ QNRTCStreaming::Interop::RTCRoom::ObtainRoomInterface()
 
 void RTCRoom::Release()
 {
-	Entity->Release();
+	if (IsReleased == false)
+	{
+		Entity->Release();
+	}
 }
 
 RTCAudio^ RTCRoom::ObtainAudioInterface()
