@@ -35,6 +35,18 @@ void RTCSession::Init()
 	RoomListener->LocalStreamMute += gcnew EventHandler<RTCRoomLocalStreamMuteEventArgs^>(this, &RTCSession::OnRoomLocalStreamMute);
 }
 
+int RTCSession::JoinRoom(System::String^ roomToken)
+{
+	Room->SetRoomListener(this->RoomListener);
+	return Room->JoinRoom(roomToken);
+}
+
+int RTCSession::LeaveRoom()
+{
+	Room->SetRoomListener(nullptr);
+	return Room->LeaveRoom();
+}
+
 RTCUserDataInfo^ RTCSession::GetUserById(System::String^ userId)
 {
 	for (int i = 0; i < Users->Count; i++)

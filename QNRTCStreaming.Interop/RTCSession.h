@@ -13,6 +13,8 @@ namespace QNRTCStreaming
 		public:
 			RTCSession();
 			void Init();
+			int JoinRoom(System::String^ roomToken);
+			int LeaveRoom();
 			property RTCRoom^ Room;
 			property RTCAudio^ Audio;
 			property RTCVideo^ Video;
