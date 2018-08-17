@@ -154,7 +154,7 @@ namespace qiniu
                 int width_,
                 int height_,
                 qiniu::VideoCaptureType video_type_
-            ) = 0;
+            ) {};
 
             /** Video device plug-in event notification,only for devices in use
             * @param [in] device_state_
