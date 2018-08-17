@@ -8,6 +8,12 @@ namespace QNRTCStreaming
 {
 	namespace Interop
 	{
+		public enum class RTCAECOption
+		{
+			aec_dmo = 0,    // dx dmo aec
+			aec_google,     // google aec
+		};
+
 		public ref class RTCAudio
 		{
 		public:
@@ -23,6 +29,15 @@ namespace QNRTCStreaming
 			int SetPlayoutDevice(RTCAudioDeviceSetting^ playoutDeviceSetting);
 			int GetAudioVolume(RTCAudioDeviceType deviceType);
 			int SetAudioVolume(RTCAudioDeviceType deviceType, int volume);
+
+			/** Set the volume of a specified user
+			* @param [in] user_id_
+			*        user id
+			* @param [in] volume_
+			*        audio volume, 0 ~ 10
+			* @return return 0 if success or an error code
+			*/
+			int SetAudioVolume(System::String^ userId, double volume);
 			int SetAudioMuteFlag(RTCAudioDeviceType deviceType, bool muteFlag);
 			bool GetAudioMuteFlag(RTCAudioDeviceType deviceType);
 			/** Enable or disable external data import feature
@@ -66,6 +81,13 @@ namespace QNRTCStreaming
 			* @return 0 ~ 100£¬audio level >= 0 if success, else return -1
 			*/
 			int GetAudioLevel(System::String^ userId);
+
+			/** Set Audio AEC algorithm
+			* @param [in] aec_option_
+			*        aec algorithm
+			* @return 0 ~ 100£¬audio level >= 0 if success, else return -1
+			*/
+			int SetAECOption(RTCAECOption aecOption);
 		};
 	}
 }

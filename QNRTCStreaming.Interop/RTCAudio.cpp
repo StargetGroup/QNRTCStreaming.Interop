@@ -104,6 +104,12 @@ int RTCAudio::SetAudioVolume(RTCAudioDeviceType deviceType, int volume)
 	return Entity->SetAudioVolume(device_type_, volume);
 }
 
+int RTCAudio::SetAudioVolume(System::String^ userId, double volume)
+{
+	auto user_id_ = DataConvertUtil::SystemStringToStdString(userId);
+	return Entity->SetAudioVolume(user_id_, volume);
+}
+
 int RTCAudio::SetAudioMuteFlag(RTCAudioDeviceType deviceType, bool muteFlag)
 {
 	auto device_type_ = (AudioDeviceInfo::AudioDeviceType)deviceType;
@@ -136,4 +142,10 @@ int RTCAudio::GetAudioLevel(System::String^ userId)
 {
 	auto user_id_ = DataConvertUtil::SystemStringToStdString(userId);
 	return Entity->GetAudioLevel(user_id_);
+}
+
+int RTCAudio::SetAECOption(RTCAECOption aecOption)
+{
+	auto aec_option_ = (AECOption)aecOption;
+	return Entity->SetAECOption(aec_option_);
 }

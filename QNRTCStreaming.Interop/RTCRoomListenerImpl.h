@@ -1,5 +1,5 @@
 #pragma once
-#include "RTCRoomListener.h";
+#include "RTCRoomListener.h"
 
 namespace QNRTCStreaming
 {

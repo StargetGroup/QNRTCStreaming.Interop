@@ -73,9 +73,12 @@ RTCUserDataInfo^ RTCSession::GetUserById(System::String^ userId)
 {
 	for (int i = 0; i < Users->Count; i++)
 	{
-		Users[i]->UserId == userId;
-		return Users[i];
+		if (Users[i]->UserId == userId)
+		{
+			return Users[i];
+		}
 	}
+	return nullptr;
 }
 
 void RTCSession::RaiseUserStateChanged(RTCSessionUserStateChangedEventArgs^ e)
