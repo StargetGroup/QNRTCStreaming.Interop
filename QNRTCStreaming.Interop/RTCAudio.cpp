@@ -104,7 +104,7 @@ int RTCAudio::SetAudioVolume(RTCAudioDeviceType deviceType, int volume)
 	return Entity->SetAudioVolume(device_type_, volume);
 }
 
-int RTCAudio::SetAudioVolume(System::String^ userId, double volume)
+int RTCAudio::SetLocalAudioVolume(System::String^ userId, double volume)
 {
 	auto user_id_ = DataConvertUtil::SystemStringToStdString(userId);
 	return Entity->SetAudioVolume(user_id_, volume);

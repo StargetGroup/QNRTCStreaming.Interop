@@ -37,7 +37,7 @@ namespace QNRTCStreaming
 			*        audio volume, 0 ~ 10
 			* @return return 0 if success or an error code
 			*/
-			int SetAudioVolume(System::String^ userId, double volume);
+			int SetLocalAudioVolume(System::String^ userId, double volume);
 			int SetAudioMuteFlag(RTCAudioDeviceType deviceType, bool muteFlag);
 			bool GetAudioMuteFlag(RTCAudioDeviceType deviceType);
 			/** Enable or disable external data import feature
