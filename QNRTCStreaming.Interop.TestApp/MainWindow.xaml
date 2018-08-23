@@ -67,6 +67,7 @@
                     <TextBox Grid.Row="1" Grid.Column="1" x:Name="_record"></TextBox>
                     <TextBlock Grid.Row="2" VerticalAlignment="Center">播放设备：</TextBlock>
                     <TextBox Grid.Row="2" Grid.Column="1" x:Name="_playout"></TextBox>
+                    <CheckBox  x:Name="_inputAudio" VerticalAlignment="Center" Grid.Row="3" Click="OnInputAudioClick">导入音频</CheckBox>
                     <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
                         <CheckBox x:Name="_publishAudio" Click="OnPublishAudioClick">发布音频</CheckBox>
                         <CheckBox x:Name="_publishVideo" Click="OnPublishVideoClick">发布视频</CheckBox>

@@ -44,6 +44,10 @@
     <Reference Include="pili-sdk-csharp">
       <HintPath>.\pili-sdk-csharp.dll</HintPath>
     </Reference>
+    <Reference Include="Spiderman.Interop, Version=1.0.6809.20797, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Spiderman.Interop.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -133,6 +137,12 @@
     </Content>
     <Content Include="..\QNRTCStreaming.Interop\RTCSDK\dist\dll\QNRTCStreamingD.dll">
       <Link>QNRTCStreamingD.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Spiderman.Common.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Spiderman.Interop.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
