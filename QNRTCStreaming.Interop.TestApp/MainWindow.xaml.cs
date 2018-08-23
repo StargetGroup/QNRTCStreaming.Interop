@@ -16,6 +16,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using pili_sdk_csharp.pili_common;
 using Spiderman.Interop;
+using System.IO;
+using System.Threading;
+using System.Runtime.InteropServices;
 
 namespace QNRTCStreaming.Interop.TestApp
 {
@@ -58,11 +61,33 @@ namespace QNRTCStreaming.Interop.TestApp
         private void OnWaveFramCaptured(object sender, WaveFrameEventArgs e)
         {
             this.Session.Audio.InputAudioFrame(e.pData, e.DataSize, e.BitsPerSample, e.SampleRate, e.NumberOfChannels, e.NumberOfFrames);
+
+            byte[] data = new byte[e.DataSize];
+            Marshal.Copy(e.pData, data, 0, e.DataSize);
+
+            if(channels != e.NumberOfChannels)
+            {
+                channels = e.NumberOfChannels;
+            }
+            if(sampleRate != e.SampleRate)
+            {
+                sampleRate = e.SampleRate;
+            }
+            if(bitsPerSample != e.BitsPerSample)
+            {
+                bitsPerSample = e.BitsPerSample;
+            }
+
+            fsWave.Write(data, 0, e.DataSize);
         }
 
         IntPtr RemoteHwnd;
         IntPtr LocalHwnd;
         public WaveCapturer WC = new WaveCapturer();
+        private FileStream fsWave;
+        private int channels;
+        private int sampleRate;
+        private int bitsPerSample;
 
         RTCSession Session = new Interop.RTCSession();
         //RTCRoom Room { get; set; }
@@ -323,12 +348,22 @@ namespace QNRTCStreaming.Interop.TestApp
             if(bInputAudio)
             {
                 Session.Audio.EnableAudioFakeInput(true);
+                this.fsWave = new FileStream("waveFile.pcm", FileMode.Create);
                 WC.Start();
             }
             else
             {
                 WC.Stop();
                 Session.Audio.EnableAudioFakeInput(false);
+                Thread.Sleep(TimeSpan.FromSeconds(1));
+                this.fsWave.Flush();
+                this.fsWave.Close();
+
+                try
+                {
+                    WC.ConvertPcmToWavFile("waveFile.pcm", "waveFile.wav", channels, sampleRate, bitsPerSample);
+                }
+                catch { }
             }
         }
     
