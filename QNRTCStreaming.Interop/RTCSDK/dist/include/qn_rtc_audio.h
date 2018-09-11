@@ -53,15 +53,7 @@ namespace qiniu
             return *this;
         }
     }AudioDeviceInfo;
-
-    /**
-    * AEC option
-    */
-    enum AECOption {
-        aec_dmo = 0,    // dx dmo aec
-        aec_google,     // google aec
-    };
-
+    
     typedef std::vector<AudioDeviceInfo> AudioDeviceInfoVec;
 
     /*!
@@ -172,7 +164,7 @@ namespace qiniu
         /** Get system audio volume
         * @param [in] device_type_
         *        audio device type: recording or playout
-        * @return return audio volume: 0 ~ 255
+        * @return return audio volume: 0 ~ 100
         */
         virtual int GetAudioVolume(AudioDeviceInfo::AudioDeviceType device_type_) = 0;
 
@@ -180,7 +172,7 @@ namespace qiniu
         * @param [in] device_type_
         *        audio device type: recording or playout
         * @param [in] volume_
-        *        audio volume
+        *        audio volume : 0 ~ 100
         * @return return 0 if success or an error code
         */
         virtual int SetAudioVolume(AudioDeviceInfo::AudioDeviceType device_type_, int volume_) = 0;
@@ -189,7 +181,7 @@ namespace qiniu
         * @param [in] user_id_
         *        user id
         * @param [in] volume_
-        *        audio volume, 0 ~ 10
+        *        audio volume, 0 ~ 100
         * @return return 0 if success or an error code
         */
         virtual int SetAudioVolume(const std::string& user_id_, double volume_) = 0;
@@ -255,16 +247,17 @@ namespace qiniu
         */
         virtual unsigned int GetAudioLevel(const std::string& user_id_) = 0;
 
-        /** Set Audio AEC algorithm
-        * @param [in] aec_option_
-        *        aec algorithm
-        * @return 0 ~ 100£¬audio level >= 0 if success, else return -1
+        /** Enable or disable desktop audio capture and mixed with microphone
+        *   when publish audio stream. desktop audio same as system audio
+        * @param [in] enable_
+        *        enable or disable
+        * @param [in] volume_scale_ratio_
+        *        desktop audio volume scale ratio, Default 1.0 does not adjust volume
+        * @return return 0 if success or an error code
         */
-        virtual int SetAECOption(AECOption aec_option_) = 0;
-
+        virtual int MixDesktopAudio(bool enable_, float volume_scale_ratio_ = 1.0f) = 0;
+        
     protected:
         virtual ~QNRTCAudio() {}
     };
 }
-
-

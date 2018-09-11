@@ -144,8 +144,13 @@ int RTCAudio::GetAudioLevel(System::String^ userId)
 	return Entity->GetAudioLevel(user_id_);
 }
 
-int RTCAudio::SetAECOption(RTCAECOption aecOption)
+//int RTCAudio::SetAECOption(RTCAECOption aecOption)
+//{
+//	auto aec_option_ = (AECOption)aecOption;
+//	return Entity->SetAECOption(aec_option_);
+//}
+
+int RTCAudio::MixDesktopAudio(bool enable, float volumeScaleRatio)
 {
-	auto aec_option_ = (AECOption)aecOption;
-	return Entity->SetAECOption(aec_option_);
+	return Entity->MixDesktopAudio(enable, volumeScaleRatio);
 }

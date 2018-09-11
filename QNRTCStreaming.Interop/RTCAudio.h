@@ -82,12 +82,22 @@ namespace QNRTCStreaming
 			*/
 			int GetAudioLevel(System::String^ userId);
 
-			/** Set Audio AEC algorithm
-			* @param [in] aec_option_
-			*        aec algorithm
-			* @return 0 ~ 100£¬audio level >= 0 if success, else return -1
+			///** Set Audio AEC algorithm
+			//* @param [in] aec_option_
+			//*        aec algorithm
+			//* @return 0 ~ 100£¬audio level >= 0 if success, else return -1
+			//*/
+			//int SetAECOption(RTCAECOption aecOption);
+
+			/** Enable or disable desktop audio capture and mixed with microphone
+			*   when publish audio stream. desktop audio same as system audio
+			* @param [in] enable_
+			*        enable or disable
+			* @param [in] volume_scale_ratio_
+			*        desktop audio volume scale ratio, Default 1.0 does not adjust volume
+			* @return return 0 if success or an error code
 			*/
-			int SetAECOption(RTCAECOption aecOption);
+			int MixDesktopAudio(bool enable, float volumeScaleRatio);
 		};
 	}
 }
