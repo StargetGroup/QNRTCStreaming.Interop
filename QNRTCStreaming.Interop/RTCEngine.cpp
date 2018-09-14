@@ -2,6 +2,8 @@
 #include "RTCEngine.h"
 
 using namespace QNRTCStreaming::Interop;
+using namespace System::IO;
+using namespace System::Windows::Forms;
 
 RTCEngine::RTCEngine()
 {
@@ -16,7 +18,8 @@ int RTCEngine::Init()
 	auto b = QNRTCEngine::Init();
 	if (b == 0)
 	{
-		QNRTCEngine::SetLogParams(qiniu::LOG_INFO, "rtc-log", "rtc.log");
+		auto path = Path::Combine(Application::StartupPath, "rtc-log");
+		QNRTCEngine::SetLogParams(qiniu::LOG_INFO, DataConvertUtil::SystemStringToStdString(path), "rtc.log");
 		IsInited = true;
 	}
 	return b;

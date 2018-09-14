@@ -149,6 +149,7 @@ xcopy $(ProjectDir)RTCSDK\dist\dll\QNRTCStreaming.dll $(TargetDir) /Y /D</Comman
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
