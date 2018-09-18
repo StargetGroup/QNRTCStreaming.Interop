@@ -10,6 +10,15 @@ RTCSession::RTCSession()
 {
 }
 
+RTCSession::~RTCSession()
+{
+	if (pCorpPictureBuffer != nullptr)
+	{
+		delete[] pCorpPictureBuffer;
+		pCorpPictureBuffer = nullptr;
+	}
+}
+
 int RTCSession::Init()
 {
 	auto b = RTCEngine::Init();
@@ -192,4 +201,30 @@ void RTCSession::OnRoomLocalUnPublish(System::Object^ sender, RTCRoomLocalUnPubl
 	RTCSessionUserStateChangedEventArgs^ args = gcnew RTCSessionUserStateChangedEventArgs;
 	args->Users = this->Users->ToArray();
 	this->RaiseUserStateChanged(args);
+}
+
+int RTCSession::CropRawPicture(
+	System::IntPtr srcData,
+	int srcWidth,
+	int srcHeight,
+	int srcDataSize,
+	RTCVideoCaptureType pictureFmt,
+	bool mirrorFlag,
+	int originX,
+	int originY,
+	int destWidth,
+	int destHeight,
+	__out System::IntPtr destData,
+	__out int destDataSize
+)
+{
+	if (pCorpPictureBuffer == nullptr) {
+		pCorpPictureBuffer = new uint8_t[destWidth * destHeight * 3];
+	}
+	uint32_t dest_size(0);
+	auto dest_data_ptr = System::IntPtr(pCorpPictureBuffer);
+	auto ret = Video->CropRawPicture(srcData, srcWidth, srcHeight, srcDataSize, pictureFmt
+		, mirrorFlag, originX, originY, destWidth, destHeight, dest_data_ptr, destWidth * destHeight * 3 / 2, __out dest_size);
+	destData = dest_data_ptr;
+	return ret;
 }

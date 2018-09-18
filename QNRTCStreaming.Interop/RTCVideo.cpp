@@ -221,3 +221,29 @@ int RTCVideo::SetMirrorWhenDisplay(System::String^ userId, bool mirrorFlag)
 	auto user_id_ = DataConvertUtil::SystemStringToStdString(userId);
 	return Entity->SetMirrorWhenDisplay(user_id_, mirrorFlag);
 }
+
+int RTCVideo::CropRawPicture(
+	System::IntPtr srcData,
+	int srcWidth,
+	int srcHeight,
+	int srcDataSize,
+	RTCVideoCaptureType pictureFmt,
+	bool mirrorFlag,
+	int originX,
+	int originY,
+	int destWidth,
+	int destHeight,
+	System::IntPtr destData,
+	int maxDestDataSize,
+	__out int destDataSize
+)
+{
+	auto src_data_ = (unsigned char*)srcData.ToPointer();
+	auto picture_fmt_ = (VideoCaptureType)pictureFmt;
+	auto dest_data_ = (unsigned char*)destData.ToPointer();
+	UINT dest_data_size_ = 0;
+	auto ret = Entity->CropRawPicture(src_data_, srcWidth, srcHeight, srcDataSize, picture_fmt_
+		, mirrorFlag, originX, originY, destWidth, destHeight, dest_data_, maxDestDataSize, __out dest_data_size_);
+	destDataSize = dest_data_size_;
+	return ret;
+}
