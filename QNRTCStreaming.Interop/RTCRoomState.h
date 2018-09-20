@@ -3,7 +3,7 @@ namespace QNRTCStreaming
 {
 	namespace Interop
 	{
-		enum class RTCRoomState
+		public enum class RTCRoomState
 		{
 			rs_idle,            // Idle, not connected
 			rs_connecting,      // Connecting
