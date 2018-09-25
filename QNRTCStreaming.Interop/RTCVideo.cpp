@@ -70,7 +70,11 @@ array<RTCCameraDeviceInfo^>^ RTCVideo::GetCameraDevices()
 */
 void RTCVideo::SetVideoListener(RTCVideoListener^ listener)
 {
-	RTCVideoListenerImpl* impl = new RTCVideoListenerImpl(listener);
+	RTCVideoListenerImpl* impl = nullptr;
+	if (listener != nullptr)
+	{
+		impl = new RTCVideoListenerImpl(listener);
+	}
 	Entity->SetVideoListener(impl);
 }
 

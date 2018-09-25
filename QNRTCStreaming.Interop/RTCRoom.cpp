@@ -44,7 +44,11 @@ RTCVideo^ RTCRoom::ObtainVideoInterface()
 
 void RTCRoom::SetRoomListener(RTCRoomListener^ listener)
 {
-	RTCRoomListenerImpl* impl = new RTCRoomListenerImpl(listener);
+	RTCRoomListenerImpl* impl = nullptr;
+	if (listener != nullptr)
+	{
+		impl = new RTCRoomListenerImpl(listener);
+	}
 	Entity->SetRoomListener(impl);
 }
 

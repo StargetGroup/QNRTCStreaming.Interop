@@ -19,6 +19,7 @@ using Spiderman.Interop;
 using System.IO;
 using System.Threading;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace QNRTCStreaming.Interop.TestApp
 {
@@ -35,7 +36,7 @@ namespace QNRTCStreaming.Interop.TestApp
             control.Height = 100;
             control.BackColor = System.Drawing.Color.Black;
             System.Windows.Forms.Integration.WindowsFormsHost host = new System.Windows.Forms.Integration.WindowsFormsHost();
-            host.HorizontalAlignment = HorizontalAlignment.Stretch;
+            host.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
             host.VerticalAlignment = VerticalAlignment.Stretch;
             host.Child = control;
             _remoteVideo.Children.Add(host);
@@ -46,7 +47,7 @@ namespace QNRTCStreaming.Interop.TestApp
             control.Height = 100;
             control.BackColor = System.Drawing.Color.Black;
             host = new System.Windows.Forms.Integration.WindowsFormsHost();
-            host.HorizontalAlignment = HorizontalAlignment.Stretch;
+            host.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
             host.VerticalAlignment = VerticalAlignment.Stretch;
             host.Child = control;
             _localVideo.Children.Add(host);
@@ -54,11 +55,19 @@ namespace QNRTCStreaming.Interop.TestApp
 
             this._roomNameInput.Text = "test";
             this._userIdInput.Text = Guid.NewGuid().ToString().Split('-')[0];
-            this.WC.FrameCaptured += this.OnWaveFramCaptured;
+            this.WC.FrameCaptured += this.OnWaveFrameCaptured;
             this.WC.Init(2);
+            this.SC.FrameCaptured += this.OnScreenFrameCaptured;
+            var screen = System.Windows.Forms.Screen.PrimaryScreen;
+            this.SC.Init(screen.GetHandle(), 0, 0, screen.Bounds.Width, screen.Bounds.Height, 0);
         }
 
-        private void OnWaveFramCaptured(object sender, WaveFrameEventArgs e)
+        private void OnScreenFrameCaptured(object sender, ScreenFrameEventArgs e)
+        {
+            this.Session.Video.InputVideoFrame(e.Pixels, e.DataSize, e.Width, e.Height, e.Timestamp, RTCVideoCaptureType.kRGB24, RTCVideoRotation.kVideoRotation_0, false);
+        }
+
+        private void OnWaveFrameCaptured(object sender, WaveFrameEventArgs e)
         {
             this.Session.Audio.InputAudioFrame(e.pData, e.DataSize, e.BitsPerSample, e.SampleRate, e.NumberOfChannels, e.NumberOfFrames);
 
@@ -84,6 +93,7 @@ namespace QNRTCStreaming.Interop.TestApp
         IntPtr RemoteHwnd;
         IntPtr LocalHwnd;
         public WaveCapturer WC = new WaveCapturer();
+        public ScreenCapturer SC = new ScreenCapturer();
         private FileStream fsWave;
         private int channels;
         private int sampleRate;
@@ -182,6 +192,20 @@ namespace QNRTCStreaming.Interop.TestApp
             var ret = Session.JoinRoom(roomToken);
         }
 
+        private void OnLeaveRoomButtonClick(object sender, RoutedEventArgs e)
+        {
+            var ret = Session.LeaveRoom();
+            _roomName.Text = "";
+            _userId.Text = "";
+            _publishAudio.IsChecked = false;
+            _publishVideo.IsChecked = false;
+            _inputAudio.IsChecked = false;
+            _inputVideo.IsChecked = false;
+            _muteAudio.IsChecked = false;
+            _muteVideo.IsChecked = false;
+            _userListView.ItemsSource = null;
+        }
+
         private void OnLocalPublishResult(object sender, RTCRoomLocalPublishResultEventArgs e)
         {
             Session.Room.Subscribe(Session.Room.GetUserId(), LocalHwnd);
@@ -229,7 +253,7 @@ namespace QNRTCStreaming.Interop.TestApp
             {
                 if (string.IsNullOrEmpty(e.ErrorMsg) == false)
                 {
-                    MessageBox.Show(e.ErrorMsg);
+                    System.Windows.MessageBox.Show(e.ErrorMsg);
                 }
                 _roomName.Text = Session.Room.GetRoomName();
                 _userId.Text = Session.Room.GetUserId();
@@ -258,7 +282,7 @@ namespace QNRTCStreaming.Interop.TestApp
                     //}
                 }
 
-                Session.Room.Subscribe(Session.Room.GetUserId(), LocalHwnd);
+                //Session.Room.Subscribe(Session.Room.GetUserId(), LocalHwnd);
 
                 //var users = e.Users.Select(el => el.UserId).ToList();
                 //_userListView.ItemsSource = users;
@@ -308,38 +332,7 @@ namespace QNRTCStreaming.Interop.TestApp
 
         private void OnPublishVideoClick(object sender, RoutedEventArgs e)
         {
-            var bPublishAudio = _publishAudio.IsChecked.Value;
-            var bPublishVideo = _publishVideo.IsChecked.Value;
-            Session.Room.UnPublish();
-            if (bPublishAudio || bPublishVideo)
-            {
-                var vd = Session.Video.GetCameraDevices().FirstOrDefault();
-                if (vd != null)
-                {
-                    var cap = vd.Capabilitys.FirstOrDefault();
-                    RTCCameraSetting camera_setting = new RTCCameraSetting();
-                    camera_setting.RenderHwnd = LocalHwnd;
-                    camera_setting.DeviceName = vd.DeviceName;
-                    camera_setting.DeviceId = vd.DeviceId;
-                    camera_setting.Width = cap.Width;
-                    camera_setting.Height = cap.Height;
-                    camera_setting.MaxFps = 15;
-                    camera_setting.Bitrate = 500000;
-                    Session.Video.SetCameraParams(camera_setting);
-                }
-                //var recordDevice = Session.Audio.GetRecordingDevices().FirstOrDefault();
-                //RTCAudioDeviceSetting audio_setting = new RTCAudioDeviceSetting();
-                //audio_setting.DeviceIndex = (short)recordDevice.DeviceIndex;
-                //audio_setting.DeviceType = RTCWindowsDeviceType.wdt_DefaultDevice;
-                //var ret = Session.Audio.SetRecordingDevice(audio_setting);
-
-                //var playoutDevice = Session.Audio.GetPlayoutDevices().FirstOrDefault();
-                //audio_setting = new RTCAudioDeviceSetting();
-                //audio_setting.DeviceIndex = (short)playoutDevice.DeviceIndex;
-                //audio_setting.DeviceType = RTCWindowsDeviceType.wdt_DefaultDevice;
-                //ret = Session.Audio.SetPlayoutDevice(audio_setting);
-                Session.Room.Publish(bPublishAudio, bPublishVideo);
-            }
+            SetVideo();
         }
 
         private void OnInputAudioClick(object sender, RoutedEventArgs e)
@@ -366,7 +359,58 @@ namespace QNRTCStreaming.Interop.TestApp
                 catch { }
             }
         }
-    
+
+        public void SetVideo()
+        {
+            var bPublishAudio = _publishAudio.IsChecked.Value;
+            var bPublishVideo = _publishVideo.IsChecked.Value;
+            var bInputVideo = _inputVideo.IsChecked.Value;
+            Session.Room.UnPublish();
+            var vd = Session.Video.GetCameraDevices().FirstOrDefault();
+            if (vd != null)
+            {
+                var cap = vd.Capabilitys.FirstOrDefault();
+                if (bInputVideo)
+                {
+                    Session.Video.EnableVideoFakeCamera(true);
+                    var screen = System.Windows.Forms.Screen.PrimaryScreen;
+                    var camera_setting = new RTCCameraSetting();
+                    camera_setting.RenderHwnd = LocalHwnd;
+                    camera_setting.Width = screen.Bounds.Width;
+                    camera_setting.Height = screen.Bounds.Height;
+                    camera_setting.MaxFps = 15;
+                    camera_setting.Bitrate = 500000;
+                    camera_setting.DeviceName = "";
+                    camera_setting.DeviceId = "";
+                    var ret = Session.Video.SetCameraParams(camera_setting);
+                    SC.Start();
+                }
+                else
+                {
+                    SC.Stop();
+                    var camera_setting = new RTCCameraSetting();
+                    camera_setting.RenderHwnd = LocalHwnd;
+                    camera_setting.DeviceName = vd.DeviceName;
+                    camera_setting.DeviceId = vd.DeviceId;
+                    camera_setting.Width = cap.Width;
+                    camera_setting.Height = cap.Height;
+                    camera_setting.MaxFps = 15;
+                    camera_setting.Bitrate = 500000;
+                    Session.Video.EnableVideoFakeCamera(false);
+                    var ret = Session.Video.SetCameraParams(camera_setting);
+                }
+            }
+            if (bPublishAudio || bPublishVideo)
+            {
+                Session.Room.Publish(bPublishAudio, bPublishVideo);
+            }
+        }
+
+        private void OnInputVideoClick(object sender, RoutedEventArgs e)
+        {
+            SetVideo();
+        }
+
         private void OnMuteAudioClick(object sender, RoutedEventArgs e)
         {
             var bMuteAudio = _muteAudio.IsChecked.Value;
@@ -381,11 +425,19 @@ namespace QNRTCStreaming.Interop.TestApp
 
         private void OnRecordVolumeChanged(object sender, TextChangedEventArgs e)
         {
+            if(string.IsNullOrEmpty(_recordVolume.Text))
+            {
+                return;
+            }
             var ret = Session.Audio.SetAudioVolume(RTCAudioDeviceType.adt_record,Convert.ToInt32(_recordVolume.Text));
         }
 
         private void OnPlayoutVolumeChanged(object sender, TextChangedEventArgs e)
         {
+            if (string.IsNullOrEmpty(_playoutVolume.Text))
+            {
+                return;
+            }
             var ret = Session.Audio.SetAudioVolume(RTCAudioDeviceType.adt_playout, Convert.ToInt32(_playoutVolume.Text));
         }
     }

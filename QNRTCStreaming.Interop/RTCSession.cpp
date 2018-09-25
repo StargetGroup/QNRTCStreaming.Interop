@@ -64,7 +64,10 @@ int RTCSession::LeaveRoom()
 {
 	if (Room != nullptr)
 	{
-		Room->SetRoomListener(nullptr);
+		this->Users->Clear();
+		RTCSessionUserStateChangedEventArgs^ args = gcnew RTCSessionUserStateChangedEventArgs;
+		args->Users = this->Users->ToArray();
+		this->RaiseUserStateChanged(args);
 		return Room->LeaveRoom();
 	}
 	return -1;

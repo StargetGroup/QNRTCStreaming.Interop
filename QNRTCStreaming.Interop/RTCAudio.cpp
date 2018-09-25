@@ -65,7 +65,11 @@ array<RTCAudioDeviceInfo^>^ RTCAudio::GetPlayoutDevices()
 
 void RTCAudio::SetAudioListener(RTCAudioListener ^ listener)
 {
-	RTCAudioListenerImpl* impl = new RTCAudioListenerImpl(listener);
+	RTCAudioListenerImpl* impl = nullptr;
+	if (listener != nullptr)
+	{
+		impl = new RTCAudioListenerImpl(listener);
+	}
 	Entity->SetAudioListener(impl);
 }
 
