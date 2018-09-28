@@ -251,3 +251,32 @@ int RTCVideo::CropRawPicture(
 	destDataSize = dest_data_size_;
 	return ret;
 }
+
+int RTCVideo::ConvertToI420(
+	System::IntPtr srcData,
+	int srcWidth,
+	int srcHeight,
+	int srcDataSize,
+	RTCVideoCaptureType pictureFmt,
+	System::IntPtr destData,
+	int maxDestDataSize,
+	__out int destDataSize
+)
+{
+	auto src_data_ = (unsigned char*)srcData.ToPointer();
+	auto picture_fmt_ = (VideoCaptureType)pictureFmt;
+	auto dest_data_ = (unsigned char*)destData.ToPointer();
+	UINT dest_data_size_ = 0;
+	auto ret = Entity->ConvertToI420(src_data_, srcWidth, srcHeight, srcDataSize, picture_fmt_, dest_data_, maxDestDataSize, __out dest_data_size_);
+	destDataSize = dest_data_size_;
+	return ret;
+}
+
+/** Enable or disable video rendering, default d3d render is enabled.
+* @param [in] enable_d3d_
+*        true:use d3d render; false:use gdi render;
+*/
+void RTCVideo::EnableD3dRender(bool enableD3d)
+{
+	Entity->EnableD3dRender(enableD3d);
+}

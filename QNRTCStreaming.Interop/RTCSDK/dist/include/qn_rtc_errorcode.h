@@ -186,6 +186,9 @@ namespace qiniu
 /* Resample failed*/
 #define Err_Internal_Resamle_Failed 11062
 
-/* No memory*/
+/* System no memory*/
 #define Err_No_Memory 11063
+
+/* Memory not enough*/
+#define Err_Memory_Not_Enough 11064
 }

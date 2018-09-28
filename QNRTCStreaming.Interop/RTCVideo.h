@@ -209,6 +209,42 @@ namespace QNRTCStreaming
 				__out int destDataSize
 			);
 
+			/** Convert raw video picture to I420 format, support format: kRGB24,kABGR,kARGB,kBGRA
+			* @param [in] src_data_
+			*        pointer to source raw data
+			* @param [in] src_width_
+			*        source picture width
+			* @param [in] src_height_
+			*        source picture height
+			* @param [in] src_data_size_
+			*        source data size
+			* @param [in] src_picture_fmt_
+			*        source picture format
+			* @param [in] dest_data_
+			*        dest data buffer pointer
+			* @param [in] max_dest_data_size_
+			*        dest_data_'s buffer size
+			* @param [out] dest_data_size_
+			*        memory dest_data_'s max size
+			* @return return 0 if success, or an error code
+			*/
+			int ConvertToI420(
+				System::IntPtr srcData,
+				int srcWidth,
+				int srcHeight,
+				int srcDataSize,
+				RTCVideoCaptureType pictureFmt,
+				System::IntPtr destData,
+				int maxDestDataSize,
+				__out int destDataSize
+			);
+
+			/** Enable or disable video rendering, default d3d render is enabled.
+			* @param [in] enable_d3d_
+			*        true:use d3d render; false:use gdi render;
+			*/
+			void EnableD3dRender(bool enableD3d);
+
 			QNRTCVideo* Entity;
 		};
 	}
