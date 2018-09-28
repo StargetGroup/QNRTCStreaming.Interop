@@ -14,6 +14,7 @@ namespace QNRTCStreaming
 		public:
 			RTCSession();
 			int Init();
+			int SetLogParams(System::String^ fileName);
 			int JoinRoom(System::String^ roomToken);
 			int LeaveRoom();
 			property RTCRoom^ Room;

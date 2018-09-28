@@ -28,8 +28,6 @@ int RTCSession::Init()
 	{
 		return b;
 	}
-	auto path = Path::Combine(Application::StartupPath, "rtc-log");
-	QNRTCEngine::SetLogParams(qiniu::LOG_INFO, DataConvertUtil::SystemStringToStdString(path), "rtc.log");
 	Room = RTCRoom::ObtainRoomInterface();
 	RoomListener = gcnew RTCRoomListener;
 	Room->SetRoomListener(RoomListener);
@@ -52,6 +50,22 @@ int RTCSession::Init()
 	RoomListener->LocalUnPublish += gcnew EventHandler<RTCRoomLocalUnPublishEventArgs^>(this, &RTCSession::OnRoomLocalUnPublish);
 	RoomListener->LocalStreamMute += gcnew EventHandler<RTCRoomLocalStreamMuteEventArgs^>(this, &RTCSession::OnRoomLocalStreamMute);
 	return 0;
+}
+
+int RTCSession::SetLogParams(System::String^ fileName)
+{
+	if (fileName == nullptr)
+	{
+		auto path = Path::Combine(Application::StartupPath, "rtc-log");
+		return RTCEngine::SetLogParams(RTCLogLevel::LOG_INFO, path, "rtc.log");
+	}
+	else
+	{
+		FileInfo^ fi = gcnew FileInfo(fileName);
+		auto path = fi->DirectoryName;
+		auto fileName = fi->Name;
+		return RTCEngine::SetLogParams(RTCLogLevel::LOG_INFO, path, fileName);
+	}
 }
 
 int RTCSession::JoinRoom(System::String^ roomToken)
