@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "RTCSession.h"
 
+using namespace System::IO;
+using namespace System::Windows::Forms;
 using namespace QNRTCStreaming::Interop;
 using namespace System::Threading;
 using namespace System::Linq;
@@ -26,6 +28,8 @@ int RTCSession::Init()
 	{
 		return b;
 	}
+	auto path = Path::Combine(Application::StartupPath, "rtc-log");
+	QNRTCEngine::SetLogParams(qiniu::LOG_INFO, DataConvertUtil::SystemStringToStdString(path), "rtc.log");
 	Room = RTCRoom::ObtainRoomInterface();
 	RoomListener = gcnew RTCRoomListener;
 	Room->SetRoomListener(RoomListener);
