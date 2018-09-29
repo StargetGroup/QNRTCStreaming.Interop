@@ -34,8 +34,13 @@ namespace QNRTCStreaming
 			static int SetLogParams(RTCLogLevel level,
 				System::String^ dirName, System::String^ fileName);
 
+			static System::String^ GetLogFileName();
+
 		//protected:
 		//	virtual ~QNRTCEngine() {};
+
+		private:
+			static System::String^ _logFileName;
 		};
 	}
 }

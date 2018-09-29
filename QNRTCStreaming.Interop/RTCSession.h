@@ -88,6 +88,7 @@ namespace QNRTCStreaming
 			void RTCSession::OnRoomLocalUnPublish(System::Object^ sender, RTCRoomLocalUnPublishEventArgs^ e);
 
 			unsigned char* pCorpPictureBuffer;
+
 			~RTCSession();
 		};
 	}

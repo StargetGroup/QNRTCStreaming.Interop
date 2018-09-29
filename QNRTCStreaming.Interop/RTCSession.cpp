@@ -54,6 +54,10 @@ int RTCSession::Init()
 
 int RTCSession::SetLogParams(System::String^ fileName)
 {
+	if (RTCEngine::GetLogFileName() != nullptr)
+	{
+		return -1;
+	}
 	if (fileName == nullptr)
 	{
 		auto path = Path::Combine(Application::StartupPath, "rtc-log");

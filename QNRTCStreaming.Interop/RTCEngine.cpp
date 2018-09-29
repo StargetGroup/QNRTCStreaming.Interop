@@ -40,5 +40,11 @@ int RTCEngine::SetLogParams(RTCLogLevel level, System::String^ dirName, System::
 	QNLogLevel level_ = (QNLogLevel)level;
 	auto dir_name_ = DataConvertUtil::SystemStringToStdString(dirName);
 	auto file_name_ = DataConvertUtil::SystemStringToStdString(fileName);
+	_logFileName = System::IO::Path::Combine(dirName, fileName);
 	return QNRTCEngine::SetLogParams(level_, dir_name_, file_name_);
+}
+
+System::String^ RTCEngine::GetLogFileName()
+{
+	return _logFileName;
 }
