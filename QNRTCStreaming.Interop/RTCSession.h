@@ -86,7 +86,7 @@ namespace QNRTCStreaming
 			void RTCSession::OnRoomRemoteStreamMute(System::Object^ sender, RTCRoomRemoteStreamMuteEventArgs^ e);
 			void RTCSession::OnRoomLocalStreamMute(System::Object^ sender, RTCRoomLocalStreamMuteEventArgs^ e);
 			void RTCSession::OnRoomLocalUnPublish(System::Object^ sender, RTCRoomLocalUnPublishEventArgs^ e);
-
+			void RTCSession::OnRoomSubscribeResult(System::Object^ sender, RTCRoomSubscribeResultEventArgs^ e);
 			unsigned char* pCorpPictureBuffer;
 
 			~RTCSession();

@@ -13,6 +13,7 @@ namespace QNRTCStreaming
 			bool VideoPublished;
 			bool AudioMute;
 			bool VideoMute;
+			bool Subscribed;
 			System::String^ ToString() override;
 		};
 	}

@@ -121,7 +121,13 @@ void RTCSession::RaiseUserStateChanged(RTCSessionUserStateChangedEventArgs^ e)
 
 void RTCSession::OnRoomJoinResult(System::Object^ sender, RTCRoomJoinResultEventArgs^ e)
 {
-	this->Users->AddRange(e->Users);
+	auto list = this->Users->ToArray();
+	for (int i = 0; i < list->Length;i++) {
+		auto user = list[i];
+		if (user->Subscribed) {
+			Room->UnSubscribe(user->UserId);
+		}
+	}
 	RTCSessionUserStateChangedEventArgs^ args = gcnew RTCSessionUserStateChangedEventArgs;
 	args->Users = this->Users->ToArray();
 	this->RaiseUserStateChanged(args);
@@ -171,6 +177,7 @@ void RTCSession::OnRoomRemotePublish(System::Object^ sender, RTCRoomRemotePublis
 	{
 		user->AudioPublished = e->EnableAudio;
 		user->VideoPublished = e->EnableVideo;
+		user->Subscribed = false;
 	}
 	RTCSessionUserStateChangedEventArgs^ args = gcnew RTCSessionUserStateChangedEventArgs;
 	args->Users = this->Users->ToArray();
@@ -183,6 +190,7 @@ void RTCSession::OnRoomRemoteUnPublish(System::Object^ sender, RTCRoomRemoteUnPu
 	{
 		user->AudioPublished = false;
 		user->VideoPublished = false;
+		user->Subscribed = false;
 	}
 	RTCSessionUserStateChangedEventArgs^ args = gcnew RTCSessionUserStateChangedEventArgs;
 	args->Users = this->Users->ToArray();
@@ -225,6 +233,15 @@ void RTCSession::OnRoomLocalUnPublish(System::Object^ sender, RTCRoomLocalUnPubl
 	RTCSessionUserStateChangedEventArgs^ args = gcnew RTCSessionUserStateChangedEventArgs;
 	args->Users = this->Users->ToArray();
 	this->RaiseUserStateChanged(args);
+}
+
+void RTCSession::OnRoomSubscribeResult(System::Object^ sender, RTCRoomSubscribeResultEventArgs^ e)
+{
+	if (e->ErrorCode == 0) 
+	{
+		auto user = GetUserById(Room->GetUserId());
+		user->Subscribed = true;
+	}
 }
 
 int RTCSession::CropRawPicture(
