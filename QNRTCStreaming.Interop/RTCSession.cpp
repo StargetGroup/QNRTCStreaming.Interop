@@ -130,6 +130,8 @@ void RTCSession::OnRoomJoinResult(System::Object^ sender, RTCRoomJoinResultEvent
 			Room->UnSubscribe(user->UserId);
 		}
 	}
+	this->Users->Clear();
+	this->Users->AddRange(e->Users);
 	RTCSessionUserStateChangedEventArgs^ args = gcnew RTCSessionUserStateChangedEventArgs;
 	args->Users = this->Users->ToArray();
 	this->RaiseUserStateChanged(args);
