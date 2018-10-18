@@ -20,6 +20,7 @@ using System.IO;
 using System.Threading;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace QNRTCStreaming.Interop.TestApp
 {
@@ -149,6 +150,7 @@ namespace QNRTCStreaming.Interop.TestApp
             Session.RoomListener.JoinResult += this.OnJoinResult;
             Session.RoomListener.RemotePublish += this.OnRemotePublish;
             Session.RoomListener.LocalPublishResult += this.OnLocalPublishResult;
+            Session.RoomListener.RoomStateChanged += this.OnRoomStateChanged;
             //User.RoomListener.RemoteUserJoin += this.OnRemoteUserJoin;
             //User.RoomListener.RemoteUserLeave += this.OnRemoteUserLeave;
             //RTCAudioDeviceSetting setting = new RTCAudioDeviceSetting();
@@ -158,9 +160,15 @@ namespace QNRTCStreaming.Interop.TestApp
             var ret = Session.JoinRoom(roomToken);
         }
 
+        private void OnRoomStateChanged(object sender, RTCRoomStateChangedEventArgs e)
+        {
+            Debug.Write(e.State.ToString());
+        }
+
         private void OnJoinTestRoomButtonClick(object sender, RoutedEventArgs e)
         {
             Session.Init();
+            Session.SetLogParams(System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "rtc-log", "rtc-log.txt"));
             var roomToken = Session.Room.CreateTestRoomToken(_roomNameInput.Text, _userIdInput.Text, true);
             Session.UserStateChanged += this.OnUserStateChanged;
             Session.RoomListener.JoinResult += this.OnJoinResult;
