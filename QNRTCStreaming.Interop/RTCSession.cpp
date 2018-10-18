@@ -241,8 +241,11 @@ void RTCSession::OnRoomSubscribeResult(System::Object^ sender, RTCRoomSubscribeR
 {
 	if (e->ErrorCode == 0) 
 	{
-		auto user = GetUserById(Room->GetUserId());
-		user->Subscribed = true;
+		auto user = GetUserById(e->UserId);
+		if (user != nullptr)
+		{
+			user->Subscribed = true;
+		}
 	}
 }
 
