@@ -177,6 +177,9 @@
     <ClInclude Include="RTCSDK\dist\include\qn_rtc_video.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="RTCErrorCode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -324,6 +327,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="RTCVideoFramePreviewEventArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RTCErrorCode.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

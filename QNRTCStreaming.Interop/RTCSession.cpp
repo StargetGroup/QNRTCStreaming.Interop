@@ -76,7 +76,6 @@ int RTCSession::JoinRoom(System::String^ roomToken)
 {
 	if (Room != nullptr)
 	{
-		Room->SetRoomListener(this->RoomListener);
 		return Room->JoinRoom(roomToken);
 	}
 	return -1;

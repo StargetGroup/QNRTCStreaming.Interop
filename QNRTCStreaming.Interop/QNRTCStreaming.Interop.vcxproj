@@ -24,7 +24,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>QNRTCStreamingInterop</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -165,6 +165,7 @@ xcopy $(ProjectDir)RTCSDK\dist\dll\QNRTCStreaming.dll $(TargetDir) /Y /D</Comman
     <ClInclude Include="RTCCameraCapability.h" />
     <ClInclude Include="RTCCameraDeviceInfo.h" />
     <ClInclude Include="RTCCameraSetting.h" />
+    <ClInclude Include="RTCErrorCode.h" />
     <ClInclude Include="RTCLogLevel.h" />
     <ClInclude Include="RTCRoomErrorEventArgs.h" />
     <ClInclude Include="RTCRoomJoinResultEventArgs.h" />
@@ -221,6 +222,7 @@ xcopy $(ProjectDir)RTCSDK\dist\dll\QNRTCStreaming.dll $(TargetDir) /Y /D</Comman
     <ClCompile Include="RTCCameraCapability.cpp" />
     <ClCompile Include="RTCCameraDeviceInfo.cpp" />
     <ClCompile Include="RTCCameraSetting.cpp" />
+    <ClCompile Include="RTCErrorCode.cpp" />
     <ClCompile Include="RTCLogLevel.cpp" />
     <ClCompile Include="RTCRoomErrorEventArgs.cpp" />
     <ClCompile Include="RTCRoomJoinResultEventArgs.cpp" />
