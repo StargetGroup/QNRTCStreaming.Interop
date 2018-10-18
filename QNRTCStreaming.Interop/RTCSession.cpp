@@ -49,6 +49,8 @@ int RTCSession::Init()
 	RoomListener->RemoteStreamMute += gcnew EventHandler<RTCRoomRemoteStreamMuteEventArgs^>(this, &RTCSession::OnRoomRemoteStreamMute);
 	RoomListener->LocalUnPublish += gcnew EventHandler<RTCRoomLocalUnPublishEventArgs^>(this, &RTCSession::OnRoomLocalUnPublish);
 	RoomListener->LocalStreamMute += gcnew EventHandler<RTCRoomLocalStreamMuteEventArgs^>(this, &RTCSession::OnRoomLocalStreamMute);
+	RoomListener->SubscribeResult += gcnew EventHandler<RTCRoomSubscribeResultEventArgs^> (this, &RTCSession::OnRoomSubscribeResult);
+
 	return 0;
 }
 
