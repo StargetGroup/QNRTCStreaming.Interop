@@ -194,6 +194,7 @@ namespace QNRTCStreaming.Interop.TestApp
             Session.UserStateChanged += this.OnUserStateChanged;
             Session.RoomListener.JoinResult += this.OnJoinResult;
             Session.RoomListener.RemotePublish += this.OnRemotePublish;
+            Session.RoomListener.RemoteUnPublish += this.OnRemoteUnPublish;
             Session.RoomListener.LocalPublishResult += this.OnLocalPublishResult;
             //User.RoomListener.RemoteUserJoin += this.OnRemoteUserJoin;
             //User.RoomListener.RemoteUserLeave += this.OnRemoteUserLeave;
@@ -202,6 +203,11 @@ namespace QNRTCStreaming.Interop.TestApp
             //setting.DeviceType = RTCWindowsDeviceType.wdt_DefaultDevice;
             //var ret = User.Audio.SetRecordingDevice(setting);
             var ret = Session.JoinRoom(roomToken);
+        }
+
+        private void OnRemoteUnPublish(object sender, RTCRoomRemoteUnPublishEventArgs e)
+        {
+            this.remoteCtl.Invalidate();
         }
 
         private void OnLeaveRoomButtonClick(object sender, RoutedEventArgs e)
@@ -216,6 +222,8 @@ namespace QNRTCStreaming.Interop.TestApp
             _muteAudio.IsChecked = false;
             _muteVideo.IsChecked = false;
             _userListView.ItemsSource = null;
+            this.localCtl.Invalidate();
+            this.remoteCtl.Invalidate();
         }
 
         private void OnLocalPublishResult(object sender, RTCRoomLocalPublishResultEventArgs e)
@@ -424,12 +432,14 @@ namespace QNRTCStreaming.Interop.TestApp
                 if(ret == (int)RTCErrorCode.Already_Published)
                 {
                     Session.Room.UnPublish();
+                    this.localCtl.Invalidate();
                     Session.Room.Publish(bPublishAudio, bPublishVideo);
                 }
             }
             else
             {
                 Session.Room.UnPublish();
+                this.localCtl.Invalidate();
             }
         }
 
