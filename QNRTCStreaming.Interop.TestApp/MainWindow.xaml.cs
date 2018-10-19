@@ -29,6 +29,8 @@ namespace QNRTCStreaming.Interop.TestApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private System.Windows.Forms.UserControl localCtl;
+        private System.Windows.Forms.UserControl remoteCtl;
         public MainWindow()
         {
             InitializeComponent();
@@ -42,7 +44,7 @@ namespace QNRTCStreaming.Interop.TestApp
             host.Child = control;
             _remoteVideo.Children.Add(host);
             RemoteHwnd = control.Handle;
-
+            remoteCtl = control;
             control = new System.Windows.Forms.UserControl();
             control.Width = 100;
             control.Height = 100;
@@ -53,7 +55,7 @@ namespace QNRTCStreaming.Interop.TestApp
             host.Child = control;
             _localVideo.Children.Add(host);
             LocalHwnd = control.Handle;
-
+            localCtl = control;
             this._roomNameInput.Text = "test";
             this._userIdInput.Text = Guid.NewGuid().ToString().Split('-')[0];
             this.WC.FrameCaptured += this.OnWaveFrameCaptured;
