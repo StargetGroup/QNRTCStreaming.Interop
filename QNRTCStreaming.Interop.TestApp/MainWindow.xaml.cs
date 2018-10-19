@@ -218,7 +218,7 @@ namespace QNRTCStreaming.Interop.TestApp
 
         private void OnLocalPublishResult(object sender, RTCRoomLocalPublishResultEventArgs e)
         {
-            Session.Room.Subscribe(Session.Room.GetUserId(), LocalHwnd);
+            //Session.Room.Subscribe(Session.Room.GetUserId(), LocalHwnd);
         }
 
         private void OnUserStateChanged(object sender, RTCSessionUserStateChangedEventArgs e)
@@ -382,7 +382,6 @@ namespace QNRTCStreaming.Interop.TestApp
             var bPublishAudio = _publishAudio.IsChecked.Value;
             var bPublishVideo = _publishVideo.IsChecked.Value;
             var bInputVideo = _inputVideo.IsChecked.Value;
-            Session.Room.UnPublish();
             var vd = Session.Video.GetCameraDevices().FirstOrDefault();
             if (vd != null)
             {
@@ -419,7 +418,12 @@ namespace QNRTCStreaming.Interop.TestApp
             }
             if (bPublishAudio || bPublishVideo)
             {
-                Session.Room.Publish(bPublishAudio, bPublishVideo);
+                var ret = Session.Room.Publish(bPublishAudio, bPublishVideo);
+                if(ret == (int)RTCErrorCode.Already_Published)
+                {
+                    Session.Room.UnPublish();
+                    Session.Room.Publish(bPublishAudio, bPublishVideo);
+                }
             }
         }
 
