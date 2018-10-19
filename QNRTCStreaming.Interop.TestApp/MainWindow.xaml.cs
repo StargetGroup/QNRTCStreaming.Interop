@@ -152,6 +152,7 @@ namespace QNRTCStreaming.Interop.TestApp
             Session.UserStateChanged += this.OnUserStateChanged;
             Session.RoomListener.JoinResult += this.OnJoinResult;
             Session.RoomListener.RemotePublish += this.OnRemotePublish;
+            Session.RoomListener.RemoteUnPublish += this.OnRemoteUnPublish;
             Session.RoomListener.LocalPublishResult += this.OnLocalPublishResult;
             Session.RoomListener.RoomStateChanged += this.OnRoomStateChanged;
             //User.RoomListener.RemoteUserJoin += this.OnRemoteUserJoin;
@@ -176,6 +177,7 @@ namespace QNRTCStreaming.Interop.TestApp
             Session.UserStateChanged += this.OnUserStateChanged;
             Session.RoomListener.JoinResult += this.OnJoinResult;
             Session.RoomListener.RemotePublish += this.OnRemotePublish;
+            Session.RoomListener.RemoteUnPublish += this.OnRemoteUnPublish;
             Session.RoomListener.LocalPublishResult += this.OnLocalPublishResult;
             //User.RoomListener.RemoteUserJoin += this.OnRemoteUserJoin;
             //User.RoomListener.RemoteUserLeave += this.OnRemoteUserLeave;
