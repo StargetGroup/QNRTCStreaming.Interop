@@ -425,6 +425,10 @@ namespace QNRTCStreaming.Interop.TestApp
                     Session.Room.Publish(bPublishAudio, bPublishVideo);
                 }
             }
+            else
+            {
+                Session.Room.UnPublish();
+            }
         }
 
         private void OnInputVideoClick(object sender, RoutedEventArgs e)
