@@ -279,7 +279,7 @@ namespace QNRTCStreaming.Interop.TestApp
 
                 _recordVolume.Text = Session.Audio.GetAudioVolume(RTCAudioDeviceType.adt_record).ToString();
                 _playoutVolume.Text = Session.Audio.GetAudioVolume(RTCAudioDeviceType.adt_playout).ToString();
-
+                var myUserId = Session.Room.GetUserId();
                 foreach (var user in e.Users)
                 {
                     //if (user.UserId == Session.Room.GetUserId())
@@ -288,7 +288,14 @@ namespace QNRTCStreaming.Interop.TestApp
                     //}
                     //else
                     //{
-                    Session.Room.Subscribe(user.UserId, RemoteHwnd);
+                    if(user.VideoPublished || user.AudioPublished)
+                    {
+                        if(user.UserId != myUserId)
+                        {
+                            Session.Room.Subscribe(user.UserId, RemoteHwnd);
+                        }
+                    }
+
                     //}
                 }
 
