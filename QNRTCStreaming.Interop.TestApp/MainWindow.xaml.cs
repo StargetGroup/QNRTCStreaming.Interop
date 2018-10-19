@@ -141,6 +141,7 @@ namespace QNRTCStreaming.Interop.TestApp
         private void OnJoinRoomButtonClick(object sender, RoutedEventArgs e)
         {
             Session.Init();
+            Session.SetLogParams(System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "rtc-log", "rtc-log.txt"));
             var roomToken = "";
             if (string.IsNullOrEmpty(_token.Text) == false)
             {
@@ -186,6 +187,7 @@ namespace QNRTCStreaming.Interop.TestApp
         private void OnJoinProductionRoomButtonClick(object sender, RoutedEventArgs e)
         {
             Session.Init();
+            Session.SetLogParams(System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "rtc-log", "rtc-log.txt"));
             var roomToken = Session.Room.CreateRoomToken(_roomNameInput.Text, _userIdInput.Text, true, DateTime.Now.AddDays(2), _appIdInput.Text, _accessKeyInput.Text, _secretKeyInput.Text);
             Session.UserStateChanged += this.OnUserStateChanged;
             Session.RoomListener.JoinResult += this.OnJoinResult;
