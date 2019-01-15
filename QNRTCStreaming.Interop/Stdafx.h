@@ -5,10 +5,10 @@
 #pragma once
 
 
-#include "RTCSDK\dist\include\qn_rtc_room.h"
-#include "RTCSDK\dist\include\qn_rtc_audio.h"
-#include "RTCSDK\dist\include\qn_rtc_video.h"
-#include "RTCSDK\dist\include\qn_rtc_errorcode.h"
+#include "RTCSDK\dist\include\qiniu\qn_rtc_room.h"
+#include "RTCSDK\dist\include\qiniu\qn_rtc_audio.h"
+#include "RTCSDK\dist\include\qiniu\qn_rtc_video.h"
+#include "RTCSDK\dist\include\qiniu\qn_rtc_errorcode.h"
 #include "gcroot.h"
 #include "DataConvertUtil.h"
 

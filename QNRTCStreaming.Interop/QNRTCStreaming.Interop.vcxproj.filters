@@ -162,21 +162,6 @@
     <ClInclude Include="resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="RTCSDK\dist\include\qn_rtc_audio.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="RTCSDK\dist\include\qn_rtc_engine.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="RTCSDK\dist\include\qn_rtc_errorcode.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="RTCSDK\dist\include\qn_rtc_room.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="RTCSDK\dist\include\qn_rtc_video.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="RTCErrorCode.h">
       <Filter>头文件</Filter>
     </ClInclude>
